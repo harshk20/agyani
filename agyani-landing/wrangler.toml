@@ -26,5 +26,5 @@ format = "service-worker"
 
 # Add KV namespace for assets
 kv_namespaces = [
-  { binding = "ASSETS", id = "agyani-assets" }
+  { binding = "ASSETS", id = "__agyani-workers_sites_assets", preview_id = "__agyani-workers_sites_assets" }
 ] 
