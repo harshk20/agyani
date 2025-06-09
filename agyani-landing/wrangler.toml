@@ -11,7 +11,10 @@ cwd = "."
 
 [env.production]
 name = "agyani-landing"
-route = "www.agyani.me/*"
+routes = [
+  "agyani.me/*",
+  "www.agyani.me/*"
+]
 zone_id = "a69c900793510c8182a593ce5b8208b4"
 
 [env.production.vars]
