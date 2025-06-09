@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-orange-100">
       <header className="container mx-auto px-4 py-8">
