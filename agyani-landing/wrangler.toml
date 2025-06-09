@@ -1,0 +1,20 @@
+name = "agyani-landing"
+compatibility_date = "2025-06-09"
+
+[site]
+bucket = "./dist"
+
+[build]
+command = "npm run build"
+cwd = "."
+
+[build.upload]
+format = "service-worker"
+
+[env.production]
+name = "agyani-landing"
+route = "www.agyani.me/*"
+zone_id = ""  # We'll add this later
+
+[env.production.vars]
+ENVIRONMENT = "production" 
