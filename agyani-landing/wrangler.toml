@@ -22,4 +22,9 @@ ENVIRONMENT = "production"
 
 # Add static asset handling
 [build.upload]
-format = "service-worker" 
+format = "service-worker"
+
+# Add KV namespace for assets
+kv_namespaces = [
+  { binding = "ASSETS", id = "agyani-assets" }
+] 
