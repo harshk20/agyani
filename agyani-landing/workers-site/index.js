@@ -17,9 +17,10 @@ async function handleEvent(event) {
     // Get the path from the URL
     const url = new URL(event.request.url)
     const path = url.pathname
+    const host = event.request.headers.get('host')
 
-    // Log the path
-    console.log('Processing path:', path)
+    // Log the path and host
+    console.log('Processing request:', { path, host })
 
     // If it's the root path, serve index.html
     if (path === '/' || path === '/index.html') {
@@ -27,7 +28,8 @@ async function handleEvent(event) {
       return new Response('Hello from agyani.me!', {
         headers: {
           'content-type': 'text/html',
-          'cache-control': 'public, max-age=3600'
+          'cache-control': 'public, max-age=3600',
+          'host': host || 'agyani.me'
         }
       })
     }
@@ -38,7 +40,8 @@ async function handleEvent(event) {
       status: 404,
       statusText: 'Not Found',
       headers: {
-        'content-type': 'text/plain'
+        'content-type': 'text/plain',
+        'host': host || 'agyani.me'
       }
     })
   } catch (e) {
