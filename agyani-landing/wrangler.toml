@@ -15,4 +15,8 @@ route = "www.agyani.me/*"
 zone_id = ""  # We'll add this later
 
 [env.production.vars]
-ENVIRONMENT = "production" 
+ENVIRONMENT = "production"
+
+# Add static asset handling
+[build.upload]
+format = "directory" 
