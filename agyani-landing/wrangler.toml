@@ -2,10 +2,10 @@ name = "agyani-landing"
 compatibility_date = "2025-06-09"
 
 [site]
-bucket = "agyani-landing/dist"
+bucket = "dist"
 
 [build]
-command = "cd agyani-landing && npm run build"
+command = "npm run build"
 cwd = "."
 
 [env.production]
