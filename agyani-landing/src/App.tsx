@@ -34,7 +34,7 @@ function App() {
           </div>
           <div className="flex-1 flex justify-center">
             <img
-              src="/ganesha.png"
+              src="/ganesha.svg"
               alt="Lord Ganesha"
               className="w-96 h-96 object-contain animate-float"
             />

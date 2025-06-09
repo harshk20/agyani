@@ -22,28 +22,41 @@ async function handleEvent(event) {
     // Log the path and host
     console.log('Processing request:', { path, host })
 
-    // If it's the root path, serve index.html
-    if (path === '/' || path === '/index.html') {
-      console.log('Serving root path')
-      return new Response('Hello from agyani.me!', {
-        headers: {
-          'content-type': 'text/html',
-          'cache-control': 'public, max-age=3600',
-          'host': host || 'agyani.me'
+    // Try to serve the asset from KV
+    try {
+      return await getAssetFromKV(event, {
+        cacheControl: {
+          browserTTL: 60 * 60 * 24, // 1 day
+          edgeTTL: 60 * 60 * 24 * 365, // 1 year
+          bypassCache: false
         }
       })
-    }
-
-    // For all other paths, return a 404
-    console.log('Path not found:', path)
-    return new Response(`Path "${path}" not found`, {
-      status: 404,
-      statusText: 'Not Found',
-      headers: {
-        'content-type': 'text/plain',
-        'host': host || 'agyani.me'
+    } catch (e) {
+      // If the asset is not found, serve index.html for all routes
+      // This enables client-side routing
+      if (e.status === 404) {
+        try {
+          return await getAssetFromKV(event, {
+            cacheControl: {
+              browserTTL: 60 * 60 * 24, // 1 day
+              edgeTTL: 60 * 60 * 24 * 365, // 1 year
+              bypassCache: false
+            }
+          }, {
+            mapRequestToAsset: req => new Request(`${new URL(req.url).origin}/index.html`, req)
+          })
+        } catch (e) {
+          return new Response('Not Found', {
+            status: 404,
+            statusText: 'Not Found',
+            headers: {
+              'content-type': 'text/plain'
+            }
+          })
+        }
       }
-    })
+      throw e
+    }
   } catch (e) {
     // Log detailed error information
     console.error('Error details:', {
