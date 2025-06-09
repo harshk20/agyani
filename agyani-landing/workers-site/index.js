@@ -6,28 +6,40 @@ addEventListener('fetch', event => {
 
 async function handleEvent(event) {
   try {
-    // Add cache control headers
-    const response = await getAssetFromKV(event, {
-      cacheControl: {
-        browserTTL: 60 * 60 * 24, // 1 day
-        edgeTTL: 60 * 60 * 24 * 365, // 1 year
-        bypassCache: false
+    // Log the request
+    console.log('Handling request:', event.request.url)
+
+    // Get the path from the URL
+    const url = new URL(event.request.url)
+    const path = url.pathname
+
+    // If it's the root path, serve index.html
+    if (path === '/' || path === '/index.html') {
+      return new Response('Hello from agyani.me!', {
+        headers: {
+          'content-type': 'text/html',
+          'cache-control': 'public, max-age=3600'
+        }
+      })
+    }
+
+    // For all other paths, return a 404
+    return new Response(`Path "${path}" not found`, {
+      status: 404,
+      statusText: 'Not Found',
+      headers: {
+        'content-type': 'text/plain'
       }
     })
-
-    // Add security headers
-    response.headers.set('X-Content-Type-Options', 'nosniff')
-    response.headers.set('X-Frame-Options', 'DENY')
-    response.headers.set('X-XSS-Protection', '1; mode=block')
-    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
-    response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
-
-    return response
   } catch (e) {
-    let pathname = new URL(event.request.url).pathname
-    return new Response(`"${pathname}" not found`, {
-      status: 404,
-      statusText: 'not found'
+    // Log any errors
+    console.error('Error handling request:', e)
+    return new Response('Internal Server Error', {
+      status: 500,
+      statusText: 'Internal Server Error',
+      headers: {
+        'content-type': 'text/plain'
+      }
     })
   }
 } 
