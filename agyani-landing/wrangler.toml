@@ -1,5 +1,6 @@
 name = "agyani-landing"
 compatibility_date = "2025-06-09"
+main = "dist/index.html"
 
 [site]
 bucket = "./dist"
