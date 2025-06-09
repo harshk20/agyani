@@ -1,5 +1,6 @@
 name = "agyani-landing"
 compatibility_date = "2025-06-09"
+main = "workers-site/index.js"
 
 [site]
 bucket = "dist"
@@ -18,4 +19,4 @@ ENVIRONMENT = "production"
 
 # Add static asset handling
 [build.upload]
-format = "directory" 
+format = "service-worker" 
