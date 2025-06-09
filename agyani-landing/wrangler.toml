@@ -8,9 +8,6 @@ bucket = "./dist"
 command = "npm run build"
 cwd = "."
 
-[build.upload]
-format = "service-worker"
-
 [env.production]
 name = "agyani-landing"
 route = "www.agyani.me/*"
