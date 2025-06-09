@@ -108,11 +108,11 @@ function App() {
               <ul className="space-y-4 text-orange-100">
                 <li className="flex items-center space-x-2">
                   <span>📧</span>
-                  <span>info@agyani.me</span>
+                  <span>gyanam@agyani.me</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span>📱</span>
-                  <span>+1 234 567 890</span>
+                  <span>+45 91 17 82 15</span>
                 </li>
               </ul>
             </div>
