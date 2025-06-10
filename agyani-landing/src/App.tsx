@@ -17,9 +17,9 @@ function App() {
               </span>
             </div>
             <div className="space-x-8">
-              <a href="#about" className="text-primary-dark hover:text-primary font-medium">About</a>
-              <a href="#services" className="text-primary-dark hover:text-primary font-medium">Services</a>
-              <a href="#contact" className="text-primary-dark hover:text-primary font-medium">Contact</a>
+              <a href="#journey" className="text-primary-dark hover:text-primary font-medium">Journey</a>
+              <a href="#thoughts" className="text-primary-dark hover:text-primary font-medium">Thoughts</a>
+              <a href="#connect" className="text-primary-dark hover:text-primary font-medium">Connect</a>
             </div>
           </div>
         </nav>
@@ -32,14 +32,14 @@ function App() {
               Welcome to <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">Agyani</span>
             </h1>
             <p className="text-xl text-primary leading-relaxed">
-              Your journey to knowledge and wisdom begins here. We help you discover, learn, and grow.
+              A journey of continuous learning, growth, and self-discovery. Documenting the path of knowledge and wisdom.
             </p>
             <div className="flex gap-6">
               <button className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-dark transition-all text-lg font-medium">
-                Get Started
+                Explore Journey
               </button>
               <button className="border-2 border-primary text-primary px-8 py-4 rounded-lg hover:bg-beige-50 transition-all text-lg font-medium">
-                Learn More
+                Read Latest
               </button>
             </div>
           </div>
@@ -52,50 +52,50 @@ function App() {
           </div>
         </div>
 
-        <section id="about" className="mt-32">
-          <h2 className="text-4xl font-bold text-primary-dark mb-12 text-center">About Us</h2>
+        <section id="journey" className="mt-32">
+          <h2 className="text-4xl font-bold text-primary-dark mb-12 text-center">The Journey</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all border border-pastel-blue">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Our Mission</h3>
+              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Learning</h3>
               <p className="text-primary leading-relaxed">
-                To empower individuals with knowledge and wisdom through innovative learning solutions.
+                Documenting the process of acquiring knowledge and skills across various domains.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all border border-pastel-green">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Our Vision</h3>
+              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Growth</h3>
               <p className="text-primary leading-relaxed">
-                To create a world where everyone has access to quality education and personal growth.
+                Sharing insights and experiences from personal development and self-improvement.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all border border-pastel-purple">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Our Values</h3>
+              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Reflection</h3>
               <p className="text-primary leading-relaxed">
-                Integrity, innovation, and inclusivity guide everything we do.
+                Contemplating lessons learned and wisdom gained through life's experiences.
               </p>
             </div>
           </div>
         </section>
 
-        <section id="services" className="mt-32">
-          <h2 className="text-4xl font-bold text-primary-dark mb-12 text-center">Our Services</h2>
+        <section id="thoughts" className="mt-32">
+          <h2 className="text-4xl font-bold text-primary-dark mb-12 text-center">Latest Thoughts</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="glass p-8 rounded-xl border border-pastel-blue">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Online Learning</h3>
+              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Learning in Public</h3>
               <p className="text-primary leading-relaxed">
-                Access our comprehensive online courses and learn at your own pace.
+                Sharing the process of learning and growing, embracing vulnerability and continuous improvement.
               </p>
             </div>
             <div className="glass p-8 rounded-xl border border-pastel-green">
               <h3 className="text-2xl font-semibold text-primary-dark mb-4">Personal Growth</h3>
               <p className="text-primary leading-relaxed">
-                Discover tools and resources to help you achieve your personal goals.
+                Documenting the journey of self-discovery and personal development.
               </p>
             </div>
           </div>
         </section>
       </main>
 
-      <footer id="contact" className="bg-primary-dark text-white mt-32">
+      <footer id="connect" className="bg-primary-dark text-white mt-32">
         <div className="container mx-auto px-4 py-16">
           <div className="grid md:grid-cols-4 gap-12">
             <div>
@@ -112,19 +112,19 @@ function App() {
                 </h3>
               </div>
               <p className="text-beige-100 leading-relaxed">
-                Empowering minds, enriching lives.
+                A journey of continuous learning and growth.
               </p>
             </div>
             <div>
-              <h4 className="text-xl font-semibold mb-6 text-pastel-blue">Quick Links</h4>
+              <h4 className="text-xl font-semibold mb-6 text-pastel-blue">Explore</h4>
               <ul className="space-y-4">
-                <li><a href="#about" className="text-beige-100 hover:text-white transition-colors">About</a></li>
-                <li><a href="#services" className="text-beige-100 hover:text-white transition-colors">Services</a></li>
-                <li><a href="#contact" className="text-beige-100 hover:text-white transition-colors">Contact</a></li>
+                <li><a href="#journey" className="text-beige-100 hover:text-white transition-colors">Journey</a></li>
+                <li><a href="#thoughts" className="text-beige-100 hover:text-white transition-colors">Thoughts</a></li>
+                <li><a href="#connect" className="text-beige-100 hover:text-white transition-colors">Connect</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-xl font-semibold mb-6 text-pastel-blue">Contact</h4>
+              <h4 className="text-xl font-semibold mb-6 text-pastel-blue">Connect</h4>
               <ul className="space-y-4 text-beige-100">
                 <li className="flex items-center space-x-2">
                   <span>📧</span>
@@ -137,7 +137,7 @@ function App() {
               </ul>
             </div>
             <div>
-              <h4 className="text-xl font-semibold mb-6 text-pastel-blue">Follow Us</h4>
+              <h4 className="text-xl font-semibold mb-6 text-pastel-blue">Follow the Journey</h4>
               <div className="flex space-x-6">
                 <a href="#" className="text-beige-100 hover:text-white transition-colors text-lg">Twitter</a>
                 <a href="#" className="text-beige-100 hover:text-white transition-colors text-lg">LinkedIn</a>
