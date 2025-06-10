@@ -7,17 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        orange: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
+        beige: {
+          50: '#fdfaf6',
+          100: '#faf5ed',
+          200: '#f5ebdb',
+          300: '#f0e1c9',
+          400: '#ebd7b7',
+          500: '#e6cda5',
+          600: '#e1c393',
+          700: '#dcb981',
+          800: '#d7af6f',
+          900: '#d2a55d',
+        },
+        pastel: {
+          blue: '#a8d8ea',
+          pink: '#f8b3d0',
+          green: '#b5e5cf',
+          yellow: '#f7e8c3',
+          purple: '#d4c4e7',
+        },
+        primary: {
+          light: '#4a90e2',
+          DEFAULT: '#357abd',
+          dark: '#2a5f9e',
         },
       },
       animation: {

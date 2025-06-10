@@ -2,51 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-  color-scheme: light dark;
-  color: #213547;
-  background-color: #ffffff;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  body {
+    @apply text-primary antialiased;
+  }
 }
 
-/* Enhanced animations */
+@layer components {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent;
+  }
+}
+
 @keyframes float {
-  0% {
-    transform: translateY(0px) rotate(0deg);
+  0%, 100% {
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px) rotate(2deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(-20px);
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
 @keyframes slideIn {
   from {
-    transform: translateX(-100%);
+    transform: translateX(50px);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -55,16 +56,11 @@
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .animate-slide-in {
-  animation: slideIn 0.8s ease-out forwards;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+  animation: slideIn 1s ease-out forwards;
 }
 
 /* Custom scrollbar */
@@ -73,92 +69,61 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #fff5f0;
+  @apply bg-beige-50;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ea580c;
-  border-radius: 4px;
+  @apply bg-primary/50 rounded-full hover:bg-primary/70 transition-colors;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #c2410c;
-}
-
-/* Enhanced button hover effects */
+/* Button hover effects */
 button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  @apply transform transition-all duration-300;
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+  @apply scale-105;
 }
 
-button:active {
-  transform: translateY(0);
-}
-
-/* Enhanced link hover effects */
+/* Link hover effects */
 a {
-  transition: all 0.3s ease;
-  position: relative;
+  @apply relative transition-colors duration-300;
 }
 
 a::after {
   content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  background-color: currentColor;
-  transition: width 0.3s ease;
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300;
 }
 
 a:hover::after {
-  width: 100%;
+  @apply w-full;
 }
 
-/* Enhanced card hover effects */
-.shadow-lg {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+/* Card hover effects */
+.card {
+  @apply transform transition-all duration-300;
 }
 
-.shadow-lg:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 25px -5px rgba(234, 88, 12, 0.1), 0 8px 10px -6px rgba(234, 88, 12, 0.1);
-}
-
-/* Glass morphism effect */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Gradient text effect */
-.gradient-text {
-  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.card:hover {
+  @apply scale-105 shadow-xl;
 }
 
 /* Loading animation */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+.loading {
+  @apply animate-pulse bg-beige-100;
 }
 
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* Gradient backgrounds */
+.gradient-bg {
+  @apply bg-gradient-to-br from-beige-50 via-white to-beige-100;
+}
+
+/* Text shadows for better readability */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-300;
 }
