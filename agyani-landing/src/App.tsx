@@ -17,8 +17,8 @@ function App() {
               </span>
             </div>
             <div className="space-x-8">
-              <a href="#journey" className="text-primary-dark hover:text-primary font-medium">Journey</a>
               <a href="#thoughts" className="text-primary-dark hover:text-primary font-medium">Thoughts</a>
+              <a href="#chintan" className="text-primary-dark hover:text-primary font-medium">Chintan</a>
               <a href="#connect" className="text-primary-dark hover:text-primary font-medium">Connect</a>
             </div>
           </div>
@@ -26,21 +26,21 @@ function App() {
       </header>
 
       <main className="container mx-auto px-4 py-16">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-32">
           <div className="flex-1 space-y-8 animate-fade-in">
             <h1 className="text-6xl font-bold text-primary-dark leading-tight">
               Welcome to <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">Agyani</span>
             </h1>
             <p className="text-xl text-primary leading-relaxed">
-              A journey of continuous learning, growth, and self-discovery. Documenting the path of knowledge and wisdom.
+              A space where thoughts flow freely, ideas take shape, and wisdom finds its voice. Join me on this journey of continuous learning and reflection.
             </p>
             <div className="flex gap-6">
-              <button className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-dark transition-all text-lg font-medium">
-                Explore Journey
-              </button>
-              <button className="border-2 border-primary text-primary px-8 py-4 rounded-lg hover:bg-beige-50 transition-all text-lg font-medium">
-                Read Latest
-              </button>
+              <a href="#thoughts" className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-dark transition-all text-lg font-medium">
+                Explore Thoughts
+              </a>
+              <a href="https://chintan.agyani.me" className="border-2 border-primary text-primary px-8 py-4 rounded-lg hover:bg-beige-50 transition-all text-lg font-medium">
+                Deep Dive
+              </a>
             </div>
           </div>
           <div className="flex-1 flex justify-center animate-slide-in">
@@ -52,45 +52,60 @@ function App() {
           </div>
         </div>
 
-        <section id="journey" className="mt-32">
-          <h2 className="text-4xl font-bold text-primary-dark mb-12 text-center">The Journey</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all border border-pastel-blue">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Learning</h3>
-              <p className="text-primary leading-relaxed">
-                Documenting the process of acquiring knowledge and skills across various domains.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all border border-pastel-green">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Growth</h3>
-              <p className="text-primary leading-relaxed">
-                Sharing insights and experiences from personal development and self-improvement.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all border border-pastel-purple">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Reflection</h3>
-              <p className="text-primary leading-relaxed">
-                Contemplating lessons learned and wisdom gained through life's experiences.
-              </p>
-            </div>
-          </div>
-        </section>
-
         <section id="thoughts" className="mt-32">
           <h2 className="text-4xl font-bold text-primary-dark mb-12 text-center">Latest Thoughts</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="glass p-8 rounded-xl border border-pastel-blue">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Learning in Public</h3>
-              <p className="text-primary leading-relaxed">
-                Sharing the process of learning and growing, embracing vulnerability and continuous improvement.
+            <article className="glass p-8 rounded-xl border border-pastel-blue hover:shadow-xl transition-all">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-sm text-primary-dark">March 15, 2024</span>
+                <span className="text-sm text-primary">5 min read</span>
+              </div>
+              <h3 className="text-2xl font-semibold text-primary-dark mb-4">The Art of Learning in Public</h3>
+              <p className="text-primary leading-relaxed mb-4">
+                Embracing vulnerability and sharing the journey of continuous learning. How documenting the process helps in growth and understanding.
               </p>
-            </div>
-            <div className="glass p-8 rounded-xl border border-pastel-green">
-              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Personal Growth</h3>
-              <p className="text-primary leading-relaxed">
-                Documenting the journey of self-discovery and personal development.
+              <a href="#" className="text-primary-dark hover:text-primary font-medium inline-flex items-center">
+                Read More
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </article>
+
+            <article className="glass p-8 rounded-xl border border-pastel-green hover:shadow-xl transition-all">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-sm text-primary-dark">March 10, 2024</span>
+                <span className="text-sm text-primary">8 min read</span>
+              </div>
+              <h3 className="text-2xl font-semibold text-primary-dark mb-4">Reflections on Growth</h3>
+              <p className="text-primary leading-relaxed mb-4">
+                Documenting the journey of self-discovery and personal development. Lessons learned and wisdom gained through experience.
               </p>
-            </div>
+              <a href="#" className="text-primary-dark hover:text-primary font-medium inline-flex items-center">
+                Read More
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section id="chintan" className="mt-32">
+          <div className="glass p-12 rounded-xl border border-pastel-purple text-center">
+            <h2 className="text-4xl font-bold text-primary-dark mb-6">Deeper Thoughts</h2>
+            <p className="text-xl text-primary leading-relaxed mb-8 max-w-2xl mx-auto">
+              For more profound reflections and in-depth explorations, visit Chintan - a space dedicated to deeper contemplation and understanding.
+            </p>
+            <a 
+              href="https://chintan.agyani.me" 
+              className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-dark transition-all text-lg font-medium"
+            >
+              Explore Chintan
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
         </section>
       </main>
@@ -112,14 +127,14 @@ function App() {
                 </h3>
               </div>
               <p className="text-beige-100 leading-relaxed">
-                A journey of continuous learning and growth.
+                A space for thoughts, ideas, and continuous learning.
               </p>
             </div>
             <div>
               <h4 className="text-xl font-semibold mb-6 text-pastel-blue">Explore</h4>
               <ul className="space-y-4">
-                <li><a href="#journey" className="text-beige-100 hover:text-white transition-colors">Journey</a></li>
                 <li><a href="#thoughts" className="text-beige-100 hover:text-white transition-colors">Thoughts</a></li>
+                <li><a href="#chintan" className="text-beige-100 hover:text-white transition-colors">Chintan</a></li>
                 <li><a href="#connect" className="text-beige-100 hover:text-white transition-colors">Connect</a></li>
               </ul>
             </div>
