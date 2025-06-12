@@ -161,6 +161,7 @@ function App() {
             </div>
           </div>
           <div className="border-t border-primary mt-12 pt-8 text-center text-beige-100">
+            <p className="mb-2">Last deployed: {new Date(__DEPLOY_TIME__).toLocaleString()}</p>
             <p>&copy; {new Date().getFullYear()} Agyani. All rights reserved.</p>
           </div>
         </div>
