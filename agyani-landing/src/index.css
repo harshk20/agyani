@@ -10,6 +10,7 @@
 
   body {
     @apply antialiased font-sans;
+    perspective: 1000px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -28,18 +29,29 @@
 
   .project-card {
     @apply relative overflow-hidden aspect-[4/3] cursor-pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .project-card img {
     @apply w-full h-full object-cover transition-transform duration-700;
+    transform-style: preserve-3d;
   }
 
   .project-card:hover img {
     @apply scale-110;
+    transform: translateZ(20px);
   }
 
   .project-title {
     @apply absolute bottom-0 left-0 p-8 text-4xl font-bold text-white;
+    transform: translateZ(30px);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+    transform-style: preserve-3d;
   }
 }
 
@@ -47,21 +59,21 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(20px) translateZ(0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
 @keyframes slideIn {
   from {
-    transform: translateX(100px);
+    transform: translateX(100px) translateZ(0);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateX(0) translateZ(0);
     opacity: 1;
   }
 }
@@ -95,4 +107,28 @@
 /* Text gradient */
 .gradient-text {
   @apply bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent;
+}
+
+/* 3D Transform Utilities */
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+.translate-z-10 {
+  transform: translateZ(10px);
+}
+
+.translate-z-20 {
+  transform: translateZ(20px);
+}
+
+.translate-z-30 {
+  transform: translateZ(30px);
+}
+
+/* Smooth scrolling container */
+.smooth-scroll {
+  @apply overflow-x-hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
