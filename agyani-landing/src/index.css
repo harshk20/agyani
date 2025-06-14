@@ -5,54 +5,65 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    @apply bg-black text-white;
   }
 
   body {
-    @apply text-primary antialiased;
+    @apply antialiased font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
   }
 }
 
 @layer components {
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-black/80 backdrop-blur-md border border-white/10;
   }
 
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent;
+  .nav-link {
+    @apply text-2xl font-bold hover:text-white/70 transition-colors duration-300;
+  }
+
+  .project-card {
+    @apply relative overflow-hidden aspect-[4/3] cursor-pointer;
+  }
+
+  .project-card img {
+    @apply w-full h-full object-cover transition-transform duration-700;
+  }
+
+  .project-card:hover img {
+    @apply scale-110;
+  }
+
+  .project-title {
+    @apply absolute bottom-0 left-0 p-8 text-4xl font-bold text-white;
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes slideIn {
   from {
-    transform: translateX(50px);
+    transform: translateX(100px);
     opacity: 0;
   }
   to {
     transform: translateX(0);
     opacity: 1;
   }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
 }
 
 .animate-fade-in {
@@ -65,65 +76,23 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-beige-50;
+  @apply bg-black;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary/50 rounded-full hover:bg-primary/70 transition-colors;
-}
-
-/* Button hover effects */
-button {
-  @apply transform transition-all duration-300;
-}
-
-button:hover {
-  @apply scale-105;
-}
-
-/* Link hover effects */
-a {
-  @apply relative transition-colors duration-300;
-}
-
-a::after {
-  content: '';
-  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300;
-}
-
-a:hover::after {
-  @apply w-full;
-}
-
-/* Card hover effects */
-.card {
-  @apply transform transition-all duration-300;
-}
-
-.card:hover {
-  @apply scale-105 shadow-xl;
-}
-
-/* Loading animation */
-.loading {
-  @apply animate-pulse bg-beige-100;
-}
-
-/* Gradient backgrounds */
-.gradient-bg {
-  @apply bg-gradient-to-br from-beige-50 via-white to-beige-100;
-}
-
-/* Text shadows for better readability */
-.text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  @apply bg-white/20 rounded-full hover:bg-white/30 transition-colors;
 }
 
 /* Smooth transitions */
 * {
-  @apply transition-colors duration-300;
+  @apply transition-all duration-300;
+}
+
+/* Text gradient */
+.gradient-text {
+  @apply bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent;
 }
