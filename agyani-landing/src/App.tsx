@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useSpring, animated } from '@react-spring/web'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import './App.css'
 
 function App() {
@@ -11,29 +10,32 @@ function App() {
     offset: ["start start", "end end"]
   })
 
-  // Transform values for parallax effect
-  const y = useTransform(scrollYProgress, [0, 1], [0, -300])
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-
-  // Spring animation for menu
-  const menuSpring = useSpring({
-    opacity: isMenuOpen ? 1 : 0,
-    transform: isMenuOpen ? 'translateY(0)' : 'translateY(-20px)',
-    config: { tension: 300, friction: 30 }
+  // Smooth scroll progress
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
   })
+
+  // Transform values for parallax effect
+  const y = useTransform(smoothProgress, [0, 1], [0, -300])
+  const scale = useTransform(smoothProgress, [0, 1], [1, 1.2])
+  const opacity = useTransform(smoothProgress, [0, 0.5], [1, 0])
 
   return (
     <div ref={containerRef} className="min-h-screen bg-black text-white overflow-hidden">
       {/* Navigation */}
       <motion.nav 
-        className="fixed top-0 left-0 w-full z-50 p-8"
-        style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}
+        className="fixed top-0 left-0 w-full z-50 p-8 glass-effect"
+        style={{ 
+          opacity: useTransform(smoothProgress, [0, 0.1], [1, 0]),
+          backdropFilter: "blur(10px)"
+        }}
       >
         <div className="container mx-auto flex justify-between items-center">
           <motion.a 
             href="/" 
-            className="text-2xl font-bold"
+            className="text-2xl font-bold text-gradient"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -41,7 +43,7 @@ function App() {
           </motion.a>
           <motion.button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-2xl font-bold"
+            className="text-2xl font-bold text-gradient"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -51,11 +53,17 @@ function App() {
       </motion.nav>
 
       {/* Full-screen Menu */}
-      <animated.div 
-        style={menuSpring}
-        className="fixed inset-0 bg-black z-40 flex items-center justify-center"
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ 
+          opacity: isMenuOpen ? 1 : 0,
+          y: isMenuOpen ? 0 : -20,
+          pointerEvents: isMenuOpen ? 'auto' : 'none'
+        }}
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 bg-black/95 z-40 flex items-center justify-center"
       >
-        <div className="text-center space-y-8">
+        <div className="text-center space-y-12">
           <motion.a 
             href="#projects" 
             className="nav-link block"
@@ -81,16 +89,16 @@ function App() {
             CONTACT
           </motion.a>
         </div>
-      </animated.div>
+      </motion.div>
 
       {/* Hero Section */}
       <motion.section 
         className="min-h-screen flex items-center justify-center p-8 perspective-1000"
         style={{ y, scale }}
       >
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center">
           <motion.h1 
-            className="text-7xl md:text-9xl font-bold mb-8"
+            className="hero-text mb-8"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -112,7 +120,7 @@ function App() {
       <section id="projects" className="py-32 px-8 perspective-1000">
         <div className="container mx-auto">
           <motion.h2 
-            className="text-4xl font-bold mb-16"
+            className="text-4xl font-bold mb-16 text-gradient"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -122,15 +130,15 @@ function App() {
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
-              className="project-card"
+              className="project-card aspect-[4/3]"
               whileHover={{ scale: 1.02, rotateY: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <img src="/ganesha.png" alt="Thoughts" className="object-contain bg-white/5" />
+              <img src="/ganesha.png" alt="Thoughts" className="w-full h-full object-cover" />
               <div className="project-title">THOUGHTS</div>
             </motion.div>
             <motion.div 
-              className="project-card"
+              className="project-card aspect-[4/3]"
               whileHover={{ scale: 1.02, rotateY: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -146,12 +154,12 @@ function App() {
       {/* About Section */}
       <motion.section 
         id="about" 
-        className="py-32 px-8 bg-white/5"
+        className="py-32 px-8 glass-effect"
         style={{ opacity }}
       >
         <div className="container mx-auto max-w-4xl">
           <motion.h2 
-            className="text-4xl font-bold mb-16"
+            className="text-4xl font-bold mb-16 text-gradient"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -177,7 +185,7 @@ function App() {
       <section id="contact" className="py-32 px-8">
         <div className="container mx-auto max-w-4xl">
           <motion.h2 
-            className="text-4xl font-bold mb-16"
+            className="text-4xl font-bold mb-16 text-gradient"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -193,7 +201,7 @@ function App() {
               transition={{ duration: 0.8 }}
             >
               <h3 className="text-2xl font-bold mb-4">EMAIL</h3>
-              <a href="mailto:gyanam@agyani.me" className="text-xl text-white/70 hover:text-white">
+              <a href="mailto:gyanam@agyani.me" className="text-xl text-white/70 hover:text-white transition-colors">
                 gyanam@agyani.me
               </a>
             </motion.div>
@@ -205,9 +213,9 @@ function App() {
             >
               <h3 className="text-2xl font-bold mb-4">SOCIAL</h3>
               <div className="space-y-4">
-                <a href="#" className="text-xl text-white/70 hover:text-white block">Twitter</a>
-                <a href="#" className="text-xl text-white/70 hover:text-white block">LinkedIn</a>
-                <a href="#" className="text-xl text-white/70 hover:text-white block">GitHub</a>
+                <a href="#" className="text-xl text-white/70 hover:text-white transition-colors block">Twitter</a>
+                <a href="#" className="text-xl text-white/70 hover:text-white transition-colors block">LinkedIn</a>
+                <a href="#" className="text-xl text-white/70 hover:text-white transition-colors block">GitHub</a>
               </div>
             </motion.div>
           </div>
