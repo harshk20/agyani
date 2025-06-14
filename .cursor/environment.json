@@ -1,0 +1,37 @@
+{
+  "name": "Development Environment",
+  "version": "1.0.0",
+  "description": "Cursor AI development environment configuration",
+  "settings": {
+    "python": {
+      "defaultInterpreter": "python3",
+      "enableLinting": true,
+      "enableFormatting": true
+    },
+    "javascript": {
+      "enableESLint": true,
+      "enablePrettier": true
+    },
+    "typescript": {
+      "enableTSLint": true,
+      "enablePrettier": true
+    },
+    "general": {
+      "autoSave": true,
+      "formatOnSave": true,
+      "enableGitIntegration": true
+    }
+  },
+  "extensions": [
+    "python",
+    "javascript",
+    "typescript",
+    "git",
+    "markdown"
+  ],
+  "ai": {
+    "enableCodeCompletion": true,
+    "enableCodeExplanation": true,
+    "enableRefactoring": true
+  }
+}
