@@ -48,11 +48,13 @@ function App() {
           <h2 className="text-4xl font-bold mb-16">PROJECTS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="project-card">
-              <img src="/project1.jpg" alt="Project 1" />
+              <img src="/ganesha.png" alt="Thoughts" className="object-contain bg-white/5" />
               <div className="project-title">THOUGHTS</div>
             </div>
             <div className="project-card">
-              <img src="/project2.jpg" alt="Project 2" />
+              <div className="w-full h-full bg-white/5 flex items-center justify-center">
+                <span className="text-2xl text-white/50">Coming Soon</span>
+              </div>
               <div className="project-title">CHINTAN</div>
             </div>
           </div>
